@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: petvax
+  datasource:
+    url: jdbc:postgresql://localhost:5432/petvax
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

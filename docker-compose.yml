@@ -1,0 +1,21 @@
+services:
+
+  mail-dev:
+    container_name: ms-mail-dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+  rabbitmq:
+    container_name: ms_rabbitmq
+    image: rabbitmq:3.9-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
