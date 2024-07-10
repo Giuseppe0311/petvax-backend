@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gracias por elegir PetVax</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .header h1 {
+            color: #333333;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .content p {
+            margin-bottom: 15px;
+            color: #666666;
+        }
+        .features {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 5px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #999999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://res.cloudinary.com/dhtrz01sf/image/upload/v1720574995/xcqm9hei5f9igzvqbjxw.png" alt="Logo de PetVax" width="100">
+        <h1>¡Gracias por elegir PetVax!</h1>
+    </div>
+
+    <div class="content">
+        <p>¡Hola <span th:text="${nombreUsuario}"></span>!</p>
+
+        <p>En nombre de todo el equipo de PetVax, queremos agradecerte por confiar en nosotros para mantener la salud y bienestar de tu mascota. En PetVax, nos comprometemos a proporcionarte la mejor experiencia para gestionar las vacunas y controles de tu compañero peludo de manera fácil y efectiva.</p>
+
+        <div class="features">
+            <p>Con nuestra aplicación, podrás:</p>
+            <ul>
+                <li><strong>Recordatorios Personalizados:</strong> Recibe notificaciones oportunas para las vacunas y controles de tu mascota.</li>
+                <li><strong>Gestión Sencilla:</strong> Programa citas, guarda registros de salud y más, todo desde tu dispositivo móvil.</li>
+                <li><strong>Seguridad y Confianza:</strong> Utilizamos tecnologías de vanguardia para garantizar la seguridad de los datos de tu mascota.</li>
+            </ul>
+        </div>
+
+        <p>Estamos aquí para asegurarnos de que tu experiencia con PetVax sea excepcional en cada paso del camino. Si tienes alguna pregunta o sugerencia, no dudes en contactarnos. Tu opinión es invaluable para nosotros.</p>
+
+        <p>Gracias nuevamente por elegir PetVax. Estamos emocionados de acompañarte en el cuidado de tu mascota.</p>
+    </div>
+
+    <div class="footer">
+        <p>¡Saludos cordiales!<br>Angel Giuseppe - CEO</p>
+    </div>
+</div>
+</body>
+</html>

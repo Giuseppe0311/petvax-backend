@@ -3,10 +3,24 @@ spring:
     name: petvax
   datasource:
     url: jdbc:postgresql://localhost:5432/petvax
-    username:
-    password:
+    username: postgres
+    password: 1234
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
+  mail:
+    password: ${MAIL_PASSWORD}
+    username: ${MAIL_USERNAME}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+petvax:
+  queues:
+    reg: reg-queue
+    notification: notification-queue
