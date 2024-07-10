@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
                 .apellidos(userRequest.apellidos())
                 .email(userRequest.email())
                 .build();
-        //userRepository.save(users);
+        userRepository.save(users);
         userRegistrationEventPublisher.sendUserCreationEvent(users);
         log.info("User created {}", users);
     }
