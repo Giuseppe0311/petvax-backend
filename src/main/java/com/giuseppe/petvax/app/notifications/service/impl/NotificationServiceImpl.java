@@ -1,5 +1,6 @@
 package com.giuseppe.petvax.app.notifications.service.impl;
 
+import com.giuseppe.petvax.app.notifications.exception.NotificationNotFound;
 import com.giuseppe.petvax.app.notifications.model.Notification;
 import com.giuseppe.petvax.app.notifications.model.NotificationStatus;
 import com.giuseppe.petvax.app.notifications.repository.NotificationRepository;
@@ -35,7 +36,9 @@ public class NotificationServiceImpl implements NotificationService {
     @Transactional
     public void updateNotificationStatus(Integer id, NotificationStatus status, String errorMessage) {
         log.info("Updating Notification status in DB");
-        Notification notification = notificationRepository.findById(id).orElseThrow();
+        Notification notification = notificationRepository.findById(id).orElseThrow(
+                ()-> new NotificationNotFound("Notification not found")
+        );
         notification.setStatus(status);
         notification.setErrorMessage(errorMessage);
         notificationRepository.save(notification);

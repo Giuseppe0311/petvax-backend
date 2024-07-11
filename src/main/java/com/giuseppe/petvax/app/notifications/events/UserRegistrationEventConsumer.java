@@ -26,6 +26,7 @@ public class UserRegistrationEventConsumer {
     private final NotificationService notificationService;
     @Value("${petvax.queues.reg}")
     private String queque;
+
     @RabbitListener(queues = "${petvax.queues.reg}")
     public void consumeUserRegistrationEvent(Users message) throws MessagingException, UnsupportedEncodingException {
         NotificationRequest notificationRequest = new NotificationRequest(
@@ -36,15 +37,9 @@ public class UserRegistrationEventConsumer {
                 null
         );
         // Guardar notificación inicialmente como PENDING
-        Notification notification =  notificationService.saveNotification(notificationRequest);
-        // Intentar enviar el correo y actualizar el estado
-        try {
-            log.info("Sending registration confirmation email to {}", message.getEmail());
-            emailService.sendRegisterConfirmation(message.getNombres(), message.getEmail());
-            notificationService.updateNotificationStatus(notification.getId(), NotificationStatus.SENT, null);
-        } catch (MessagingException e) {
-            log.error("Error sending email to {}", message.getEmail(), e);
-            notificationService.updateNotificationStatus(notification.getId(), NotificationStatus.ERROR, e.getMessage());
-        }
+        Notification notification = notificationService.saveNotification(notificationRequest);
+        log.info("Sending registration confirmation email to {}", message.getEmail());
+        emailService.sendRegisterConfirmation(message.getNombres(), message.getEmail());
+        notificationService.updateNotificationStatus(notification.getId(), NotificationStatus.SENT, null);
     }
 }

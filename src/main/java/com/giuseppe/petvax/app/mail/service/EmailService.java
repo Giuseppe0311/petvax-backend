@@ -27,26 +27,21 @@ public class EmailService {
     private String email;
 
     @Async
-   public void sendRegisterConfirmation(String nombreUsuario ,String email) throws MessagingException, UnsupportedEncodingException {
+    public void sendRegisterConfirmation(String nombreUsuario, String email) throws MessagingException, UnsupportedEncodingException {
         String templatename = EmailTemplate.REGISTRATION_CONFIRMATION.getTemplateName();
         MimeMessage message = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message,MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,"UTF-8");
+        MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, "UTF-8");
         helper.setSubject(EmailTemplate.REGISTRATION_CONFIRMATION.getSubject());
         //set the alias for email
-        helper.setFrom(email, "PetVax");
-        Map<String,Object> variables = new HashMap<>();
-        variables.put("nombreUsuario",nombreUsuario);
+        helper.setFrom(this.email, "PetVax");
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("nombreUsuario", nombreUsuario);
         Context context = new Context();
         context.setVariables(variables);
-        try {
-            String html  = templateEngine.process(templatename,context);
-            helper.setText(html,true);
-            helper.setTo(email);
-            javaMailSender.send(message);
-            log.info("Email sent successfully to {}",email);
-        }catch (MessagingException e){
-            log.error("Error sending email to {}",email,e);
-            throw e;
-        }
+        String html = templateEngine.process(templatename, context);
+        helper.setText(html, true);
+        helper.setTo(email);
+        javaMailSender.send(message);
+        log.info("Email sent successfully to {}", email);
     }
 }

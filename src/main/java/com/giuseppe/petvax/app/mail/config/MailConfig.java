@@ -17,11 +17,18 @@ public class MailConfig {
 
 
     private Properties properties() {
+        //CONFIGURE FOR MAIL DEV
         Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "false");
+        properties.put("mail.smtp.starttls.enable", "false");
+        properties.put("mail.smtp.host", "localhost");
+        properties.put("mail.smtp.port", "1025");
+
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.smtp.host", "smtp.gmail.com");
+//        properties.put("mail.smtp.port", "587");
         return properties;
     }
 
